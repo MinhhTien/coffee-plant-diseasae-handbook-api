@@ -38,9 +38,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Init
-        run: pwd && echo $USER
-
       - name: Install
         run: npm install
 
@@ -120,8 +117,8 @@ jobs:
           echo FIREBASE_CLIENT_X509_CERT_URL=${{ secrets.FIREBASE_CLIENT_X509_CERT_URL }} >> .env
           echo FIREBASE_UNIVERSE_DOMAIN=${{ secrets.FIREBASE_UNIVERSE_DOMAIN }} >> .env
 
-      - name: Prepare
-        run: cp -r . /home/api/actions-runner/handbook-api
+      - name: Copy
+        run: rm -r -f .git && cp -r . /home/api/actions-runner/handbook-api
 
       - name: Deploy
         run: pm2 reload handbook-api --update-env
