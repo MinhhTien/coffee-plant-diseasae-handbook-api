@@ -121,7 +121,9 @@ jobs:
         run: rm -r -f .git && cp -r . /home/api/actions-runner/handbook-api
 
       - name: Deploy
-        run: pm2 reload handbook-api --update-env
+        run: |
+          export PATH=$PATH:/home/api/.nvm/versions/node/v22.12.0;
+          pm2 reload handbook-api --update-env
 
   snyk:
     runs-on: ubuntu-latest
