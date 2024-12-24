@@ -41,8 +41,8 @@ jobs:
       - name: Install
         run: npm install
 
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build
 
       - name: Update sentry sourcemaps
         env:
@@ -117,8 +117,11 @@ jobs:
           echo FIREBASE_CLIENT_X509_CERT_URL=${{ secrets.FIREBASE_CLIENT_X509_CERT_URL }} >> .env
           echo FIREBASE_UNIVERSE_DOMAIN=${{ secrets.FIREBASE_UNIVERSE_DOMAIN }} >> .env
 
+      - name: Prepare
+        run: cp -r . /home/api/handbook-api
+
       - name: Deploy
-        run: pm2 restart handbook-api
+        run: pm2 reload handbook-api --update-env
 
   snyk:
     runs-on: ubuntu-latest
