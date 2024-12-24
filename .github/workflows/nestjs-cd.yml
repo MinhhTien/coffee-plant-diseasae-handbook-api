@@ -118,7 +118,7 @@ jobs:
           echo FIREBASE_UNIVERSE_DOMAIN=${{ secrets.FIREBASE_UNIVERSE_DOMAIN }} >> .env
 
       - name: Prepare
-        run: cp -r . /home/api/handbook-api
+        run: cp -r . /home/api/actions-runner/handbook-api
 
       - name: Deploy
         run: pm2 reload handbook-api --update-env
