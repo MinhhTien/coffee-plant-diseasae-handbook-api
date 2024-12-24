@@ -1,0 +1,115 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@common/*": [
+        "src/common/*"
+      ],
+      "@media/*": [
+        "src/media/*"
+      ],
+      "@mail/*": [
+        "src/mail/*"
+      ],
+      "@auth/*": [
+        "src/auth/*"
+      ],
+      "@learner/*": [
+        "src/learner/*"
+      ],
+      "@instructor/*": [
+        "src/instructor/*"
+      ],
+      "@staff/*": [
+        "src/staff/*"
+      ],
+      "@garden-manager/*": [
+        "src/garden-manager/*"
+      ],
+      "@garden/*": [
+        "src/garden/*"
+      ],
+      "@recruitment/*": [
+        "src/recruitment/*"
+      ],
+      "@seeds/*": [
+        "src/seeds/*"
+      ],
+      "@i18n/*": [
+        "src/i18n/*"
+      ],
+      "@transaction/*": [
+        "src/transaction/*"
+      ],
+      "@review/*": [
+        "src/review/*"
+      ],
+      "@setting/*": [
+        "src/setting/*"
+      ],
+      "@course/*": [
+        "src/course/*"
+      ],
+      "@class/*": [
+        "src/class/*"
+      ],
+      "@garden-timesheet/*": [
+        "src/garden-timesheet/*"
+      ],
+      "@class-request/*": [
+        "src/class-request/*"
+      ],
+      "@queue/*": [
+        "src/queue/*"
+      ],
+      "@attendance/*": [
+        "src/attendance/*"
+      ],
+      "@payout-request/*": [
+        "src/payout-request/*"
+      ],
+      "@feedback/*": [
+        "src/feedback/*"
+      ],
+      "@firebase/*": [
+        "src/firebase/*"
+      ],
+      "@certificate/*": [
+        "src/certificate/*"
+      ],
+      "@notification/*": [
+        "src/notification/*"
+      ],
+      "@report/*": [
+        "src/report/*"
+      ],
+      "@variety/*": [
+        "src/variety/*"
+      ],
+      "@src/*": [
+        "src/*"
+      ]
+    },
+    "inlineSources": true,
+    // Set `sourceRoot` to  "/" to strip the build path prefix
+    // from generated source code references.
+    // This improves issue grouping in Sentry.
+    "sourceRoot": "/"
+  }
+}

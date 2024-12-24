@@ -1,0 +1,9 @@
+<pre style="font-family: Arial, Helvetica, sans-serif">
+    Chào <%= name %>,
+    Cảm ơn bạn đã đăng ký tài khoản tại Handbook.
+    Để hoàn tất quá trình đăng ký, vui lòng nhập mã OTP sau vào hệ thống:
+        <b><%= code %></b>
+    Mã OTP này chỉ có hiệu lực trong vòng <%= expirationMinutes %> phút.
+    Nếu bạn không yêu cầu thao tác này, vui lòng bỏ qua email này.
+</pre>
+<%- include('footer') -%>
