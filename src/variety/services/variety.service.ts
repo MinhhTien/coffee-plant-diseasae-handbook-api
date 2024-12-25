@@ -23,6 +23,7 @@ export interface IVarietyService {
     projection?: Record<string, any>,
     populates?: Array<PopulateOptions>
   ): Promise<VarietyDocument[]>
+  countVariety(conditions: FilterQuery<VarietyDocument>): Promise<number>
 }
 
 @Injectable()
@@ -137,5 +138,9 @@ export class VarietyService implements IVarietyService {
       populates
     })
     return varieties
+  }
+
+  countVariety(conditions: FilterQuery<VarietyDocument>): Promise<number> {
+    return this.varietyRepository.model.countDocuments(conditions)
   }
 }
