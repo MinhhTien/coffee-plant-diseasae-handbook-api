@@ -5,7 +5,7 @@ import { QueryDiseaseDto } from '@disease/dto/view-disease.dto'
 import { Injectable, Inject, OnModuleInit } from '@nestjs/common'
 import { IDiseaseRepository } from '@src/disease/repositories/disease.repository'
 import { Disease, DiseaseDocument } from '@src/disease/schemas/disease.schema'
-import { FilterQuery, PopulateOptions, QueryOptions, SaveOptions, Types, UpdateQuery } from 'mongoose'
+import { Aggregate, FilterQuery, PopulateOptions, QueryOptions, SaveOptions, Types, UpdateQuery } from 'mongoose'
 
 export const IDiseaseService = Symbol('IDiseaseService')
 
@@ -23,6 +23,11 @@ export interface IDiseaseService {
     projection?: Record<string, any>,
     populates?: Array<PopulateOptions>
   ): Promise<DiseaseDocument[]>
+  countDisease(conditions: FilterQuery<DiseaseDocument>): Promise<number>
+  countSymptom(conditions: FilterQuery<DiseaseDocument>): Promise<number>
+  countPrevention(conditions: FilterQuery<DiseaseDocument>): Promise<number>
+  getSymptomReportByLevel(): Aggregate<any[]>
+  getDiseaseReportByMonth(): Aggregate<any[]>
 }
 
 @Injectable()
@@ -171,5 +176,75 @@ export class DiseaseService implements IDiseaseService {
       populates
     })
     return diseases
+  }
+
+  countDisease(conditions: FilterQuery<DiseaseDocument>): Promise<number> {
+    return this.diseaseRepository.model.countDocuments(conditions)
+  }
+
+  async countSymptom(conditions: FilterQuery<DiseaseDocument>): Promise<number> {
+    const result = await this.diseaseRepository.model.aggregate([
+      {
+        $unwind: {
+          path: '$symptoms'
+        }
+      },
+      {
+        $count: 'count'
+      }
+    ])
+    return result[0]?.count || 0
+  }
+
+  async countPrevention(conditions: FilterQuery<DiseaseDocument>): Promise<number> {
+    const result = await this.diseaseRepository.model.aggregate([
+      {
+        $unwind: {
+          path: '$preventions'
+        }
+      },
+      {
+        $count: 'count'
+      }
+    ])
+    return result[0]?.count || 0
+  }
+
+  getSymptomReportByLevel() {
+    return this.diseaseRepository.model.aggregate([
+      {
+        $unwind: {
+          path: '$symptoms'
+        }
+      },
+      {
+        $project: {
+          symptoms: 1
+        }
+      },
+      {
+        $group: {
+          _id: '$symptoms.level',
+          count: {
+            $count: {}
+          }
+        }
+      }
+    ])
+  }
+
+  getDiseaseReportByMonth() {
+    return this.diseaseRepository.model.aggregate([
+      {
+        $project: {
+          startMonth: {
+            $month: '$time.startTime'
+          },
+          endMonth: {
+            $month: '$time.endTime'
+          }
+        }
+      }
+    ])
   }
 }

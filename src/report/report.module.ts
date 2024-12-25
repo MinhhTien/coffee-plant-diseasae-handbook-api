@@ -3,13 +3,15 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { ReportService, IReportService } from './services/report.service'
 import { ReportRepository, IReportRepository } from './repositories/report.repository'
 import { Report, ReportSchema } from './schemas/report.schema'
-import { ManagementReportController } from './controllers/management.report.controller'
-import { InstructorReportController } from './controllers/instructor.report.controller'
+import { ReportController } from './controllers/management.report.controller'
+import { VarietyModule } from '@variety/variety.module'
+import { DiseaseModule } from '@disease/disease.module'
+// import { InstructorReportController } from './controllers/instructor.report.controller'
 
 @Global()
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Report.name, schema: ReportSchema }])],
-  // controllers: [ManagementReportController, InstructorReportController],
+  imports: [MongooseModule.forFeature([{ name: Report.name, schema: ReportSchema }]), VarietyModule, DiseaseModule],
+  controllers: [ReportController],
   providers: [
     {
       provide: IReportService,
