@@ -102,6 +102,9 @@
       "@variety/*": [
         "src/variety/*"
       ],
+      "@disease/*": [
+        "src/disease/*"
+      ],
       "@src/*": [
         "src/*"
       ]

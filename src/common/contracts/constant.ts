@@ -19,6 +19,25 @@ export enum VarietyStatus {
   INACTIVE = 'INACTIVE'
 }
 
+export enum SymptomLevel {
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH'
+}
+
+export enum SeasonType {
+  SPRING = 'SPRING',
+  SUMMER = 'SUMMER',
+  FALL = 'FALL',
+  WINTER = 'WINTER'
+}
+
+export enum PreventionType {
+  CHEMISTRY = 'CHEMISTRY',
+  BIOLOGY = 'BIOLOGY',
+  PHYSICS = 'PHYSICS'
+}
+
 export enum LearnerStatus {
   UNVERIFIED = 'UNVERIFIED',
   ACTIVE = 'ACTIVE',
