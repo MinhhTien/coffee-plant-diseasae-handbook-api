@@ -10,6 +10,7 @@ export const VARIETY_DETAIL_PROJECTION = [
   'leaf',
   'bean',
   'flavor',
+  'image',
   'createdAt',
   'updatedAt'
 ] as const

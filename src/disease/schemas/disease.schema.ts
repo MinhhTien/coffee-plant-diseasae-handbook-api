@@ -47,6 +47,9 @@ export class Disease {
   @Prop({ type: BaseTimeDto })
   time: BaseTimeDto
 
+  @Prop({ type: String, required: true })
+  image: string
+
   @Prop({ type: [BasePreventionDto] })
   preventions: BasePreventionDto[]
 }
