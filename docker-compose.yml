@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: handbook-api
+    build:
+      context: . # Use the current directory as the build context
+      dockerfile: Dockerfile # Specify the name of your Dockerfile
+    image: handbook-api:latest
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env

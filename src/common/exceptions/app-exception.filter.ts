@@ -2,7 +2,6 @@ import { ArgumentsHost, Catch, HttpException, HttpStatus, LoggerService } from '
 import { BaseExceptionFilter } from '@nestjs/core'
 import * as _ from 'lodash'
 import { AppException } from '@common/exceptions/app.exception'
-import { captureException as sentryCaptureException } from '@sentry/node'
 import { DiscordService } from '@common/services/discord.service'
 import { Errors } from '@common/contracts/error'
 
@@ -39,8 +38,6 @@ export class AppExceptionFilter extends BaseExceptionFilter {
     }
 
     if (httpStatus === HttpStatus.INTERNAL_SERVER_ERROR && process.env.NODE_ENV !== 'local') {
-      // Sentry
-      sentryCaptureException(exception)
 
       // Discord Bot
       if (this.discordService)
