@@ -6,11 +6,12 @@ import { Report, ReportSchema } from './schemas/report.schema'
 import { ReportController } from './controllers/management.report.controller'
 import { VarietyModule } from '@variety/variety.module'
 import { DiseaseModule } from '@disease/disease.module'
+import { HeritageModule } from '@heritage/heritage.module'
 // import { InstructorReportController } from './controllers/instructor.report.controller'
 
 @Global()
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Report.name, schema: ReportSchema }]), VarietyModule, DiseaseModule],
+  imports: [MongooseModule.forFeature([{ name: Report.name, schema: ReportSchema }]), VarietyModule, DiseaseModule, HeritageModule],
   controllers: [ReportController],
   providers: [
     {
