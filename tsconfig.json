@@ -105,6 +105,9 @@
       "@disease/*": [
         "src/disease/*"
       ],
+      "@heritage/*": [
+        "src/heritage/*"
+      ],
       "@src/*": [
         "src/*"
       ]

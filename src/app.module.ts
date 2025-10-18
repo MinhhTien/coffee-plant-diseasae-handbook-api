@@ -23,6 +23,7 @@ import { CommandModule } from './command/command.module'
 import { VarietyModule } from '@variety/variety.module'
 import { ThrottlerModule } from '@nestjs/throttler'
 import { DiseaseModule } from '@disease/disease.module'
+import { HeritageModule } from '@heritage/heritage.module'
 
 @Module({
   imports: [
@@ -125,6 +126,10 @@ import { DiseaseModule } from '@disease/disease.module'
       {
         path: 'diseases',
         module: DiseaseModule
+      },
+      {
+        path: 'heritages',
+        module: HeritageModule
       }
     ]),
     TerminusModule.forRoot({
@@ -140,7 +145,8 @@ import { DiseaseModule } from '@disease/disease.module'
     ReportModule,
     CommandModule,
     VarietyModule,
-    DiseaseModule
+    DiseaseModule,
+    HeritageModule
   ],
   controllers: [AppController],
   providers: [AppService]
