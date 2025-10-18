@@ -37,6 +37,7 @@ import { VN_TIMEZONE } from '@src/config'
 import * as moment from 'moment-timezone'
 import { IVarietyService } from '@variety/services/variety.service'
 import { IDiseaseService } from '@disease/services/disease.service'
+import { IHeritageService } from '@heritage/services/heritage.service'
 
 @ApiTags('Report ')
 @ApiBearerAuth()
@@ -50,23 +51,39 @@ export class ReportController {
     @Inject(IVarietyService)
     private readonly varietyService: IVarietyService,
     @Inject(IDiseaseService)
-    private readonly diseaseService: IDiseaseService
+    private readonly diseaseService: IDiseaseService,
+    @Inject(IHeritageService)
+    private readonly heritageService: IHeritageService
   ) {}
 
-  @ApiOperation({
-    summary: `View Report Data Total Summary`
+  // @ApiOperation({
+  //   summary: `View Report Data Total Summary`
+  // })
+  // // @ApiOkResponse({ type: ReportTotalSummaryListDataResponse })
+  // // @Roles(UserRole.ACCOUNT)
+  // @Get('summary')
+  // async viewReportTotalSummary() {
+  //   const [varietyCount, diseaseCount, symptomCount, preventionCount] = await Promise.all([
+  //     this.varietyService.countVariety({ status: VarietyStatus.ACTIVE }),
+  //     this.diseaseService.countDisease({}),
+  //     this.diseaseService.countSymptom({}),
+  //     this.diseaseService.countPrevention({})
+  //   ])
+  //   return { varietyCount, diseaseCount, symptomCount, preventionCount }
+  // }
+
+   @ApiOperation({
+    summary: `View Heritage Report Data Total Summary`
   })
   // @ApiOkResponse({ type: ReportTotalSummaryListDataResponse })
   // @Roles(UserRole.ACCOUNT)
   @Get('summary')
-  async viewReportTotalSummary() {
-    const [varietyCount, diseaseCount, symptomCount, preventionCount] = await Promise.all([
-      this.varietyService.countVariety({ status: VarietyStatus.ACTIVE }),
-      this.diseaseService.countDisease({}),
-      this.diseaseService.countSymptom({}),
-      this.diseaseService.countPrevention({})
+  async viewHeritageReportTotalSummary() {
+    const [tangibleCount, intangibleCount] = await Promise.all([
+      this.heritageService.countHeritage({ type: 'tangible' }),
+      this.heritageService.countHeritage({ type: 'intangible' }),
     ])
-    return { varietyCount, diseaseCount, symptomCount, preventionCount }
+    return { tangibleCount, intangibleCount }
   }
 
   @ApiOperation({
