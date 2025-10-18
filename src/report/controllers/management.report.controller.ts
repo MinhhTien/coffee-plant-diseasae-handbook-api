@@ -80,8 +80,8 @@ export class ReportController {
   @Get('summary')
   async viewHeritageReportTotalSummary() {
     const [tangibleCount, intangibleCount] = await Promise.all([
-      this.heritageService.countHeritage({ type: 'tangible' }),
-      this.heritageService.countHeritage({ type: 'intangible' }),
+      this.heritageService.countHeritage({ type: 'vat-the' }),
+      this.heritageService.countHeritage({ type: 'phi-vat-the' }),
     ])
     return { tangibleCount, intangibleCount }
   }
