@@ -99,4 +99,9 @@ export class BaseHeritageDto implements Heritage {
   @IsOptional()
   @IsUrl()
   modelUrl: string
+
+  @ApiPropertyOptional({ type: String })
+  @IsOptional()
+  @IsUrl()
+  audioUrl: string
 }

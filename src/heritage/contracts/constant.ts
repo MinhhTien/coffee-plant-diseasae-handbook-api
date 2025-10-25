@@ -14,7 +14,8 @@ export const HERITAGE_DETAIL_PROJECTION = [
   'relatedCommunity',
   'createdAt',
   'updatedAt',
-  'modelUrl'
+  'modelUrl',
+  'audioUrl',
 ] as const
 
 export const HERITAGE_LIST_PROJECTION = HERITAGE_DETAIL_PROJECTION

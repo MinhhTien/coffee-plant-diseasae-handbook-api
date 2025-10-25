@@ -59,6 +59,12 @@ export class Heritage {
 
   @Prop({ type: String }) // intangible
   relatedCommunity: string
+
+  @Prop({ type: String })
+  audioUrl: string
+
+  @Prop({ type: String })
+  modelUrl: string
 }
 
 export const HeritageSchema = SchemaFactory.createForClass(Heritage)
