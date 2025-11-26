@@ -27,23 +27,23 @@ import { HeritageModule } from '@heritage/heritage.module'
 
 @Module({
   imports: [
-    I18nModule.forRootAsync({
-      useFactory: () => ({
-        fallbackLanguage: 'en',
-        loaderOptions: {
-          path: join(__dirname, '/i18n/'),
-          includeSubfolders: true,
-          watch: true
-        }
-      }),
-      resolvers: [
-        new QueryResolver(['lang', 'l']),
-        new HeaderResolver(['Accept-Language']),
-        new CookieResolver(),
-        AcceptLanguageResolver
-      ],
-      inject: [ConfigService]
-    }),
+    // I18nModule.forRootAsync({
+    //   useFactory: () => ({
+    //     fallbackLanguage: 'en',
+    //     loaderOptions: {
+    //       path: join(__dirname, '/i18n/'),
+    //       includeSubfolders: true,
+    //       watch: true
+    //     }
+    //   }),
+    //   resolvers: [
+    //     new QueryResolver(['lang', 'l']),
+    //     new HeaderResolver(['Accept-Language']),
+    //     new CookieResolver(),
+    //     AcceptLanguageResolver
+    //   ],
+    //   inject: [ConfigService]
+    // }),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
