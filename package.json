@@ -7,6 +7,7 @@
   "scripts": {
     "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then npx husky install; fi",
     "build": "nest build",
+    "vercel-build": "ts-node -r tsconfig-paths/register node_modules/.bin/nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
